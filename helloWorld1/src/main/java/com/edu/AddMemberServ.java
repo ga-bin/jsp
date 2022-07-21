@@ -1,6 +1,7 @@
 package com.edu;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,13 +20,27 @@ public class AddMemberServ extends HttpServlet {
 		
 		// get:수정, post:입력,
 		// db입력
+		resp.setContentType("text/html;Charset=UTF-8");
+		PrintWriter out = resp.getWriter();
 
 		EmpDAO dao = new EmpDAO();
+		int r;
 		if(req.getMethod().toUpperCase().equals("GET")) {
-			dao.updateMember(name, pass, role);
+			r = dao.updateMember(name, pass, role);
+			if(r<1) {
+				 out.println("<script>alert('수정실패!'); location.href='/helloWorld1/html/get.html';</script>");
+			}  else {
+				out.println("<script>alert('수정성공!'); location.href='/helloWorld1/html/get.html';</script>");
+			} 
 		} else {
-			dao.insertMember(name, pass, role);
+			r = dao.insertMember(name, pass, role);
+			if(r<1) {
+				 out.println("<script>alert('등록실패!'); location.href='/helloWorld1/html/get.html';</script>");
+			}  else {
+				out.println("<script>alert('등록성공!'); location.href='/helloWorld1/html/get.html';</script>");
+			} 
 		}
+		
 		
 		// DB입력
 		

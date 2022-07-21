@@ -6,7 +6,8 @@ import java.util.List;
 
 public class EmpDAO extends DAO {
 	
-	public void updateMember(String name, String pass, String role) {
+	public int updateMember(String name, String pass, String role) {
+		int r = 0;
 		connection();
 		try {
 			String sql = "update members set member_password=?, member_role = ? where member_id = ?";
@@ -15,16 +16,18 @@ public class EmpDAO extends DAO {
 			pstmt.setString(2, role);
 			pstmt.setString(3, name);
 			
-			int r = pstmt.executeUpdate();
+			r = pstmt.executeUpdate();
 			System.out.println(r + "건 변경됨.");
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnection();
 		}
+		return r;
 	}
 	// user_name, user_pass, role => 입력.
-	public void insertMember(String name, String pass, String role) {
+	public int insertMember(String name, String pass, String role) {
+		int r = 0;
 		connection();
 		try {
 		String sql = "insert into members values(?,?,?)";
@@ -33,13 +36,14 @@ public class EmpDAO extends DAO {
 		pstmt.setString(2, pass);
 		pstmt.setString(3, role);
 		
-		int result = pstmt.executeUpdate(); // insert, update, delete
-		System.out.println(result + "건 입력됨.");
+		r = pstmt.executeUpdate(); // insert, update, delete
+		System.out.println(r + "건 입력됨.");
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnection();
 		}
+		return r;
 	}
 	
 	
