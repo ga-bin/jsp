@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.EmpDAO;
+
 @WebServlet("/addMember")
 public class AddMemberServ extends HttpServlet {
 	@Override
@@ -35,9 +37,9 @@ public class AddMemberServ extends HttpServlet {
 		} else {
 			r = dao.insertMember(name, pass, role);
 			if(r<1) {
-				 out.println("<script>alert('등록실패!'); location.href='/helloWorld1/html/get.html';</script>");
+				 out.println("<script>alert('등록실패!'); location.href='/helloWorld1/html/post.html';</script>");
 			}  else {
-				out.println("<script>alert('등록성공!'); location.href='/helloWorld1/html/get.html';</script>");
+				out.println("<script>alert('등록성공!'); location.href='/helloWorld1/html/post.html';</script>");
 			} 
 		}
 		

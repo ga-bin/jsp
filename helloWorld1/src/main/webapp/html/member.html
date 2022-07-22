@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>member</title>
+</head>
+<body>
+	<h3>회원정보</h3>
+    <form action="queryTest" method="post">
+      ID: <input type="text" name="id" />
+      <br />
+      비밀번호: <input type="password" name="pwd" />
+      <br />
+      이름 : <input type="text" name="name" />
+      <br />
+      취미 : <input type="checkbox" name="hobby" value="climbing" checked/>등산
+      <input type="checkbox" name="hobby" value="sport" />운동
+      <input type="checkbox" name="hobby" value="reading" />독서
+      <input type="checkbox" name="hobby" value="traveling" />여행
+      <br /> 
+      성별 : <input type="radio" name="gender" value="male" checked/>남자
+      <input type="radio" name="gender" value="female" />여자 종교 :
+      <select name="religion">
+        <option value="christianity">기독교</option>
+        <option value="buddhism">불교</option>
+        <option value="catholicism">천주교</option>
+        <option value="atheism">무교</option>
+      </select>
+      자기소개: <br />
+      <textarea name="introduction" id="" cols="30" rows="10"></textarea><br />
+      <input type="submit" value="전송" />
+      <input type="reset" value="초기화" />
+    </form>
+    <script>
+      console.log(decodeURI("%EA%B9%80%EA%B0%80%EB%B9%88"));
+     
+      
+      let str = 'id=%E3%84%B1%E3%84%B1%E3%84%B1&pwd=rrr&name=rrr&hobby=climbing&gender=male&religion=christianity&introduction=rrr';
+      let result = getParameter(str, 'hobby');
+      console.log(result);
+      
+      
+      function getParameter(str, param) {
+          let strList = str.split("&");
+          if (param === "id") {
+            return  strList[0].substring(3);
+          } else if (param === "pwd") {
+            return strList[1].substring(4);
+          } else if (param === "name") {
+            return strList[2].substring(5);
+          } else if (param === "hobby") {
+            return strList[3].substring(6);
+          } else if (param === "gender") {
+            return strList[4].substring(7);
+          } else if (param === "religion") {
+            return strList[5].substring(9);
+          } else if (param === "introduction") {
+            return strList[6].substring(13);
+          }
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.edu;
+package common;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
