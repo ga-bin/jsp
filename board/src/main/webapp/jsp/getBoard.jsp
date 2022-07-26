@@ -46,8 +46,20 @@ request.setCharacterEncoding("utf-8");
 			<td><%=vo.getView()%></td>
 		</tr>
 	
-	
+		
 	</table>
+	<p>
+	<%
+	 String loginId = (String) session.getAttribute("loginId");
+	if(loginId != null && loginId.equals(vo.getWriter())) {
+		
+	%>
+	<a href="updateForm.jsp?bno=<%=vo.getBoardId()%>">수정화면</a>
+	<a href="deleteForm.jsp?bno=<%=vo.getBoardId()%>">삭제화면</a><br>
+	<%
+		}
+	%>
+	<a href="boardList.jsp">글목록으로</a>
 	<button onclick="location.href='boardList.jsp'" >뒤로가기</button>
 	
 
