@@ -25,5 +25,6 @@
 		PW: <input type="password" name="pwd"><br>
 		<input type="submit" value="로그인">
 	</form>
+	<button onclick="location.href='memberForm.html'">회원가입</button>
 </body>
 </html>
