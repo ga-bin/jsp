@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원검색결과</title>
 </head>
 <body>
 	<h3>검색결과</h3>

@@ -109,4 +109,40 @@ public class MemberDAO {
 		}
 		return vo;
 	}
+	
+	// 수정
+	public void updateMember(MemberVO vo) {
+		try {
+			String sql = "update member1 set name = ?,  passwd = ?, mail = ? where id = ? ";
+			connect();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getName());
+			pstmt.setString(2, vo.getPasswd());
+			pstmt.setString(3, vo.getMail());
+			pstmt.setString(4, vo.getId());
+			
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "건 입력");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			disconnect();
+		}
+	}
+	
+	// 삭제
+	public void deleteMember(String id) {
+		try {
+			connect();
+			String sql = "delete from member1 where id = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			int r = pstmt.executeUpdate();
+			System.out.println(r + "건 삭제");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+	}
 }

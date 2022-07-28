@@ -9,7 +9,6 @@
 <body>
 	<h3>회원검색</h3>
 	${error }
-	${request.servletContext.contextPath }
 	<form action="${pageContext.request.contextPath }/memberSearch.do" method="post">
 		아이디: <<input type="text" name="id"/>
 		<input type="hidden" name="job" value="search"  />
