@@ -131,7 +131,8 @@ public class MemberDAO {
 	}
 	
 	// 삭제
-	public void deleteMember(String id) {
+	public boolean deleteMember(String id) {
+		boolean isDeleted = false;
 		try {
 			connect();
 			String sql = "delete from member1 where id = ?";
@@ -139,10 +140,14 @@ public class MemberDAO {
 			pstmt.setString(1, id);
 			int r = pstmt.executeUpdate();
 			System.out.println(r + "건 삭제");
+			if (r > 0) {
+				isDeleted = true;
+			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
+		return isDeleted;
 	}
 }
